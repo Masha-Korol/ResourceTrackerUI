@@ -1,4 +1,6 @@
 <template>
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+
   <div class="header-container">
     <div class="title-container">
       <text id="band-name" class="title-text">{{event.eventName}}</text>
@@ -10,23 +12,27 @@
 
   <div class="concert-container">
     <div class="concert-poster-container">
-      <div>
-        <img src="./images/image.png">
+      <div class="concert-block" @click="this.$router.push({name: 'EventInfo', params: { id: this.event.id}})">
+        <div class="resource-name-block">
+          <a href="https://stackoverflow.com/questions/1232793/javascript-set-img-src">
+            <u>{{event.resourceName}} - {{event.resourceType}}
+            </u>
+          </a>
+        </div>
       </div>
 
-      <rating :mark="event.mark" @onMarkChange="onMarkChange"/>
+      <div class="rating-and-favorite-block">
+        <rating :mark="event.mark" @onMarkChange="onMarkChange"/>
+        <div>
+          <i class="fas fa-bookmark favorite-icon"></i>
+        </div>
+      </div>
 
       <comments :event-comments="event.eventComments" @createComment="createComment"/>
     </div>
 
     <div class="concert-description">
-      <div id="concert-city" class="concert-info-big">{{event.city}}</div>
-      <div class="ill-go-container">
-        <button id="ill-go-button" class="btn-ill-go default"
-                @click="onIllGoChange" v-bind:class="event.willGo ? 'button-pressed' : 'button-not-pressed'">
-          {{event.willGo ? 'Я не пойду' : 'Я пойду'}}
-        </button>
-      </div>
+
     </div>
   </div>
 </template>
@@ -61,7 +67,6 @@ export default {
   },
   methods: {
     onMarkChange(newMark) {},
-    onIllGoChange() {},
     createComment(newComment) {
       this.event.eventComments.push(newComment);
     }
@@ -69,8 +74,8 @@ export default {
   created() {
     this.event = {
       id: '1',
-      eventName: 'Ресурс1',
-      posterFile: 'image.png',
+      resourceName: 'Введение в Java',
+      resourceType: 'Статья',
       eventComments: [
         {
           id: '1',
@@ -184,5 +189,37 @@ img {
   background: none;
   border-color: #FFFFFF;
   border-radius: 10px;
+}
+
+.concert-block {
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: none;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: rgba(28, 28, 28, 0.5);
+  width: 350px;
+  height: 100px;
+}
+
+.resource-name-block {
+  font-size: xx-large;
+  margin-top: 8%;
+  align-self: center;
+}
+
+.rating-and-favorite-block {
+  display: flex;
+  flex-direction: row;
+}
+
+.favorite-icon {
+  color: #ffc700;
+  margin-top: 16px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 </style>

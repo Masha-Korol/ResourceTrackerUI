@@ -7,14 +7,14 @@
     </div>
     <events-header-item/>
     <recommendations-header-item/>
-    <administration-header-item v-if="userInfo.isAdmin"/>
+    <administration-header-item/>
     <logout-header-item/>
   </div>
 
   <div class="profile-container">
     <div id="profile-detail-concerts" class="profile-detail-container">
       <div class="profile-detail-container-title">
-        Ресурсы
+        Мои ресурсы
       </div>
      <event-text-info v-for="event in userInfo.userEvents" :event="event" :key="event.id" />
     </div>
@@ -51,7 +51,21 @@ export default {
     cancelFriendRequest(userId) {}
   },
   created() {
-    this.userInfo = {};
+    this.userInfo = {
+      userName: 'Masha',
+      userEvents: [
+        {
+          id: '2',
+          resourceName: 'Статья 2',
+          resourceType: 'Статья',
+        },
+        {
+          id: '3',
+          resourceName: 'Видео о ML',
+          resourceType: 'Видео',
+        }
+      ]
+    };
   }
 }
 </script>

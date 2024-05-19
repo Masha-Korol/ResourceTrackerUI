@@ -11,16 +11,7 @@
   <div class="administration-stuff-container">
     <div class="data-modification-forms-container">
       <div class="button-container">
-        <button class="add-data-button" @click="showAddCityDialog = true">Добавить город</button>
-      </div>
-      <div class="button-container">
-        <button class="add-data-button" @click="showAddVenueDialog = true">Добавить площадку</button>
-      </div>
-      <div class="button-container">
-        <button class="add-data-button" @click="showAddArtistDialog = true">Добавить исполнителя</button>
-      </div>
-      <div class="button-container">
-        <button class="add-data-button" @click="showAddEventDialog = true">Добавить мероприятие</button>
+        <button class="add-data-button" @click="showAddCityDialog = true">Добавить ресурс</button>
       </div>
       <div class="button-container">
         <button class="add-data-button" @click="showAddUserDialog = true">Добавить пользователя</button>
@@ -32,24 +23,12 @@
         <view-cities :cities="cities"/>
       </div>
       <div>
-        <view-venues :venues="venues"/>
-      </div>
-      <div>
-        <view-artists :artists="artists"/>
-      </div>
-      <div>
-        <view-events :events="events"/>
-      </div>
-      <div>
         <view-users :users="users"/>
       </div>
     </div>
   </div>
 
   <add-city-dialog v-model:show="showAddCityDialog" @createCity="createCity"/>
-  <add-venue-dialog v-model:show="showAddVenueDialog" :cities="cities" @createVenue="createVenue"/>
-  <add-artist-dialog v-model:show="showAddArtistDialog" @createArtist="createArtist"/>
-  <add-event-dialog v-model:show="showAddEventDialog" :venues="venues" :artists="artists" @createEvent="createEvent"/>
   <add-user-dialog v-model:show="showAddUserDialog" @createUser="createUser"/>
 </template>
 
@@ -97,8 +76,55 @@ export default {
     }
   },
   created() {
-    this.events = [];
-    this.users = [];
+    this.cities = [
+      {
+        id: '1',
+        resourceName: 'Статья 2',
+        resourceType: 'Статья',
+        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+      },
+      {
+        id: '2',
+        resourceName: 'Статья 2',
+        resourceType: 'Статья',
+        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+      },
+      {
+        id: '3',
+        resourceName: 'Видео о ML',
+        resourceType: 'Видео',
+        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+      },
+      {
+        id: '4',
+        resourceName: 'Статья 4',
+        resourceType: 'Статья',
+        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+      },
+      {
+        id: '5',
+        resourceName: 'Курс 1',
+        resourceType: 'Курс',
+        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+      }
+    ];
+    this.users = [
+      {
+        id: '1',
+        userName: 'maria',
+        isAdmin: true,
+      },
+      {
+        id: '2',
+        userName: 'alexander',
+        isAdmin: true,
+      },
+      {
+        id: '3',
+        userName: 'marina',
+        isAdmin: false,
+      }
+    ];
   }
 }
 </script>

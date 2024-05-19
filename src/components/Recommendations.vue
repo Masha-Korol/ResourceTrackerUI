@@ -18,10 +18,8 @@
 </template>
 
 <script>
-import axios from 'axios';
 import EventTextInfo from '@/components/events/EventTextInfo.vue';
 import RecommendedUser from '@/components/users/RecommendedUser.vue';
-import {authHeader, handleAxiosError} from '@/util/authentication-helper';
 
 export default {
   name: 'Recommendations',
@@ -41,7 +39,25 @@ export default {
     cancelFriendRequest(userId) {}
   },
   created() {
-    this.recommendations = [];
+    this.recommendations = {
+      recommendedEvents:  [
+        {
+          id: '2',
+          resourceName: 'Статья 2',
+          resourceType: 'Статья',
+        },
+        {
+          id: '3',
+          resourceName: 'Видео о ML',
+          resourceType: 'Видео',
+        },
+        {
+          id: '5',
+          resourceName: 'Курс 1',
+          resourceType: 'Курс',
+        }
+      ]
+    };
   }
 }
 </script>

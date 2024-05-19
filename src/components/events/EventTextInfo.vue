@@ -1,7 +1,6 @@
 <template>
   <div class="concert-block" @click="this.$router.push({name: 'EventInfo', params: { id: this.event.id}})">
-    <div>{{event.eventName}} - {{event.city}}</div>
-    <div>{{event.date}}</div>
+    <div>{{event.resourceName}} - {{event.resourceType}}</div>
   </div>
 </template>
 

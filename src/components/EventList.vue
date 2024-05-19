@@ -48,29 +48,34 @@ export default {
     this.events = [
       {
         id: '1',
-        posterFile: 'image.png',
+        resourceName: 'Статья 2',
+        resourceType: 'Статья',
       }
     ];
 
     this.popularResources = [
       {
         id: '2',
-        posterFile: 'image.png',
+        resourceName: 'Статья 2',
+        resourceType: 'Статья',
       },
       {
         id: '3',
-        posterFile: 'image.png',
+        resourceName: 'Видео о ML',
+        resourceType: 'Видео',
       }
     ];
 
     this.recommendedResources = [
       {
         id: '4',
-        posterFile: 'image.png',
+        resourceName: 'Статья 4',
+        resourceType: 'Статья',
       },
       {
         id: '5',
-        posterFile: 'image.png',
+        resourceName: 'Курс 1',
+        resourceType: 'Курс',
       }
     ];
   }

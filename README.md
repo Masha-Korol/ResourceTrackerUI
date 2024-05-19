@@ -20,9 +20,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 TODO:
-1. administration page - don't show page by url if not admin
-2. administration page - edit events, locations etc
-3. make all pages 100% in height
-4. administration page - date and time validation for event form
-5. administration page - userName is unique
-6. register for user
+2. user profile - company info
+3. resource view - preview
+4. resource view - resources similar to this one

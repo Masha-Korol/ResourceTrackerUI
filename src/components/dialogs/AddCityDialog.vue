@@ -3,13 +3,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" @click="this.$emit('update:show', false)">&times;</span>
-        <h2>Добавить город</h2>
+        <h2>Добавить ресурс</h2>
       </div>
       <div class="modal-body">
         <div class="form-body">
           <form>
             <label for="city-name">Название</label>
             <input type="text" id="city-name" name="cityName" placeholder="" v-model="newCity.cityName">
+
+            <label for="city-name">Тип</label>
+            <input type="text" id="city-name" name="cityName" placeholder="" v-model="newCity.cityType">
+
+            <label for="city-name">Ссылка</label>
+            <input type="text" id="city-name" name="cityName" placeholder="" v-model="newCity.cityLink">
 
             <input type="submit" value="Отправить" @click="createCity">
 
@@ -37,7 +43,9 @@ export default {
   data() {
     return {
       newCity: {
-        cityName: ''
+        cityName: '',
+        cityType: '',
+        cityLink: '',
       },
       errors: []
     }

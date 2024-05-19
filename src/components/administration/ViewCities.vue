@@ -1,16 +1,20 @@
 <template>
   <table>
-    <caption>Города</caption>
+    <caption>Ресурсы</caption>
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
       <th>Id</th>
       <th>Название</th>
+      <th>Тип</th>
+      <th>Ссылка</th>
     </tr>
     </thead>
     <tbody v-if="!isTableHidden">
     <tr v-for="city in cities">
       <td>{{ city.id }}</td>
-      <td>{{ city.cityName }}</td>
+      <td>{{ city.resourceName }}</td>
+      <td>{{ city.resourceType }}</td>
+      <td><a class="resource-link"><u>{{ city.resourceLink }}</u></a></td>
     </tr>
     </tbody>
   </table>
@@ -62,5 +66,9 @@ table th,
 table td {
   padding: .5em;
   border: 1px solid lightgrey;
+}
+
+.resource-link {
+  color: black !important;
 }
 </style>

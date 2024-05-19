@@ -1,6 +1,6 @@
 <template>
   <div class="concert-block" @click="this.$router.push({name: 'EventInfo', params: { id: this.event.id}})">
-    <img src="../images/image.png">
+    <div class="resource-name-block">{{event.resourceName}} - {{event.resourceType}}</div>
   </div>
 </template>
 
@@ -12,26 +12,27 @@ export default {
       required: true,
     }
   },
-  data() {
-    return {
-      posterFile: '',
-    }
-  },
-  created() {
-    // this.posterFile = '../images/' + this.event.posterFile;
-    // document.getElementById(`image-some-id).src = this.posterFile;
-  }
 }
 </script>
 
 <style scoped>
 .concert-block {
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: none;
   padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  background: rgba(28, 28, 28, 0.5);
+  width: 350px;
+  height: 100px;
 }
 
-img {
-  width: 400px;
-  height: 400px;
+.resource-name-block {
+  font-size: xx-large;
+  margin-top: 8%;
+  align-self: center;
 }
 </style>

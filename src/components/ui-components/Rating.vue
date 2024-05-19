@@ -40,7 +40,7 @@ export default {
 .rate {
   height: 46px;
   padding: 0 10px;
-  margin-left: 180px;
+  margin-left: 40px;
   width: 200px;
 }
 
