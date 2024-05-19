@@ -5,7 +5,7 @@
         Профиль: {{userInfo.userName}}
       </text>
     </div>
-    <events-header-item/>
+    <resources-header-item/>
     <recommendations-header-item/>
     <profile-header-item/>
   </div>
@@ -15,7 +15,7 @@
       <div class="profile-detail-container-title">
         Ресурсы
       </div>
-      <event-text-info v-for="event in userInfo.userEvents" :event="event" :key="event.id"/>
+      <resource-text-info v-for="resource in userInfo.userResources" :resource="resource" :key="resource.id"/>
     </div>
 
     <div id="buttons" class="buttons-container">
@@ -28,13 +28,11 @@
 </template>
 
 <script>
-import axios from 'axios';
-import EventTextInfo from '@/components/events/EventTextInfo.vue';
-import {authHeader, handleAxiosError} from '@/util/authentication-helper';
+import ResourceTextInfo from '@/components/resources/ResourceTextInfo.vue';
 
 export default {
   components: {
-    EventTextInfo
+    ResourceTextInfo
   },
   computed: {
     userId() {
@@ -92,7 +90,7 @@ export default {
   text-align: center;
 }
 
-.concert-block {
+.resource-block {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: none;
   padding: 10px;

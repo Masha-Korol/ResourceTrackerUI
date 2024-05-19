@@ -1,5 +1,6 @@
 body {
-    background-image: url("@/../images/main-picture.png");
+    /*background-image: url("@/../images/main-picture.png");*/
+    background: #002D62;
     height: 100vh;
 }
 
@@ -43,7 +44,7 @@ body {
     font-family: 'Inter';
     font-style: italic;
     font-weight: 300;
-    font-size: 96px;
+    font-size: 70px;
     line-height: 116px;
     color: #FFFFFF;
 }

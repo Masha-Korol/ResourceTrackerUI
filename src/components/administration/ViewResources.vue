@@ -10,11 +10,11 @@
     </tr>
     </thead>
     <tbody v-if="!isTableHidden">
-    <tr v-for="city in cities">
-      <td>{{ city.id }}</td>
-      <td>{{ city.resourceName }}</td>
-      <td>{{ city.resourceType }}</td>
-      <td><a class="resource-link"><u>{{ city.resourceLink }}</u></a></td>
+    <tr v-for="resource in resources">
+      <td>{{ resource.id }}</td>
+      <td>{{ resource.resourceName }}</td>
+      <td>{{ resource.resourceType }}</td>
+      <td><a class="resource-link"><u>{{ resource.resourceLink }}</u></a></td>
     </tr>
     </tbody>
   </table>
@@ -22,9 +22,9 @@
 
 <script>
 export default {
-  name: 'view-cities',
+  name: 'view-resources',
   props: {
-    cities: {
+    resources: {
       type: Array,
       required: true
     },

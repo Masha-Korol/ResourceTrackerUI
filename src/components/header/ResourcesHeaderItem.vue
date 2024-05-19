@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'events-header-item'
+  name: 'resources-header-item'
 }
 </script>
 

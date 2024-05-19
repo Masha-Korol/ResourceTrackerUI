@@ -1,13 +1,14 @@
 <template>
-  <div class="concert-block" @click="this.$router.push({name: 'EventInfo', params: { id: this.event.id}})">
-    <div>{{event.resourceName}} - {{event.resourceType}}</div>
+  <div class="resource-block" @click="this.$router.push({name: 'ResourceInfo', params: { id: this.resource.id}})">
+    <div>{{resource.resourceName}}</div>
+    <div class="resource-type-block"><i>{{resource.resourceType}}</i></div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    event: {
+    resource: {
       type: Object,
       required: true
     }
@@ -16,7 +17,7 @@ export default {
 </script>
 
 <style scoped>
-.concert-block {
+.resource-block {
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: none;
   padding: 10px;
@@ -25,5 +26,9 @@ export default {
   flex-direction: column;
   cursor: pointer;
   background: rgba(28, 28, 28, 0.5);
+}
+
+.resource-type-block {
+  font-size: x-large;
 }
 </style>

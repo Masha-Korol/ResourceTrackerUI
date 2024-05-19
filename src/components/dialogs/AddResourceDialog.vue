@@ -3,20 +3,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" @click="this.$emit('update:show', false)">&times;</span>
-        <h2>Добавить площадку</h2>
+        <h2>Добавить ресурс</h2>
       </div>
       <div class="modal-body">
         <div class="form-body">
           <form>
-            <label for="venue-name">Название</label>
-            <input type="text" id="venue-name" name="venueName" placeholder="" v-model="newVenue.venueName">
+            <label for="resource-name">Название</label>
+            <input type="text" id="resource-name" name="resourceName" placeholder="" v-model="newResource.resourceName">
 
-            <label for="city">Город</label>
-            <select id="city" name="city" v-model="newVenue.cityId">
-              <option v-for="city in cities" :value="city.id">{{city.cityName}}</option>
-            </select>
+            <label for="resource-type">Тип</label>
+            <input type="text" id="resource-type" name="resourceType" placeholder="" v-model="newResource.resourceType">
 
-            <input type="submit" value="Отправить" @click="createVenue">
+            <label for="resource-link">Ссылка</label>
+            <input type="text" id="resource-link" name="resourceLink" placeholder="" v-model="newResource.resourceLink">
+
+            <input type="submit" value="Отправить" @click="createResource">
 
             <p v-if="errors.length">
               <ul>
@@ -32,47 +33,50 @@
 
 <script>
 export default {
-  name: 'add-venue-dialog',
+  name: 'add-resource-dialog',
   props: {
     show: {
       type: Boolean,
       default: false
-    },
-    cities: {
-      type: Array,
-      required: true
-    },
+    }
   },
   data() {
     return {
-      newVenue: {
-        venueName: '',
-        cityId: ''
+      newResource: {
+        resourceName: '',
+        resourceType: '',
+        resourceLink: '',
       },
-      errors: [],
+      errors: []
     }
   },
   methods: {
-    createVenue(event) {
+    createResource(event) {
       event.preventDefault();
 
       this.validateForm();
 
       if (this.errors.length === 0) {
-        this.$emit('createVenue', this.newVenue);
-        this.newVenue.venueName = '';
-        this.newVenue.cityId = '';
+        this.$emit('createResource', this.newResource);
+        this.newResource.resourceName = '';
+        this.newResource.resourceType = '';
+        this.newResource.resourceLink = '';
         this.$emit('update:show', false);
       }
     },
     validateForm() {
       this.errors = [];
 
-      if (!this.newVenue.venueName) {
-        this.errors.push('Необходимо указать название площадки.');
+      if (!this.newResource.resourceName) {
+        this.errors.push('Необходимо указать название ресурса.');
       }
-      if (!this.newVenue.cityId) {
-        this.errors.push('Необходимо указать город.');
+
+      if (!this.newResource.resourceType) {
+        this.errors.push('Необходимо указать тип ресурса.');
+      }
+
+      if (!this.newResource.resourceLink) {
+        this.errors.push('Необходимо указать ссылку на ресурс.');
       }
     }
   }
