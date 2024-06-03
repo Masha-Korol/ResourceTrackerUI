@@ -230,8 +230,6 @@ img {
 }
 
 .similar-resources-recommendations-title {
-  margin-left: 60px;
-  align-self: center;
   font-size: 40px;
 }
 

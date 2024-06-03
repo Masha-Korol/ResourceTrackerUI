@@ -7,6 +7,7 @@ import ResourceInfo from '@/components/ResourceInfo.vue';
 import Profile from '@/components/Profile.vue';
 import UserProfile from '@/components/UserProfile.vue';
 import Login from '@/components/Login.vue';
+import CompanyInfo from '@/components/company/CompanyInfo.vue';
 
 const routes = [
     { path: '/', name: 'ResourceList', component: ResourceList },
@@ -16,6 +17,7 @@ const routes = [
     { path: '/profile', name: 'Profile', component: Profile },
     { path: '/user-profile/:id', name: 'UserProfile', component: UserProfile },
     { path: '/login', name: 'Login', component: Login },
+    { path: '/company', name: 'CompanyInfo', component: CompanyInfo },
 ];
 
 const router = createRouter({

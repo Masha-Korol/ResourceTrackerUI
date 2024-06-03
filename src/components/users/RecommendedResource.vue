@@ -1,7 +1,7 @@
 <template>
   <div class="resource-block" @click="this.$router.push({name: 'ResourceInfo', params: { id: this.resource.id}})">
     <div>{{resource.resourceName}} - {{resource.resourceType}}</div>
-    <div class="recommended-by-clock"><i>Отметил: {{resource.recommendedBy}}</i></div>
+    <div class="recommended-by-clock"><i>{{resource.recommendedBy}}</i></div>
   </div>
 </template>
 

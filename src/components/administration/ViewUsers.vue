@@ -6,6 +6,7 @@
       <th>Id</th>
       <th>Имя</th>
       <th>Админ</th>
+      <th></th>
     </tr>
     </thead>
     <tbody v-if="!isTableHidden">
@@ -13,6 +14,12 @@
       <td>{{ user.id }}</td>
       <td>{{ user.userName }}</td>
       <td>{{ user.isAdmin ? 'админ' : '' }}</td>
+      <td>
+        <div>
+          <i class='far fa-edit' style='font-size:24px; margin-left: 5px; cursor: pointer;'></i>
+          <i style="font-size:24px; margin-left: 10px; cursor: pointer;" class="fa">&#xf00d;</i>
+        </div>
+      </td>
     </tr>
     </tbody>
   </table>
@@ -20,7 +27,7 @@
 
 <script>
 export default {
-  name: 'view-users',
+  name: 'ViewUsers',
   props: {
     users: {
       type: Array,

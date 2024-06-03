@@ -13,6 +13,11 @@
       <resource-preview v-for="resource in recommendedResources" :resource="resource" :key="resource.id" />
     </div>
 
+    <h1 class="most-popular-resources-h1">Ресурсы, подобранные по вашим тэгам</h1> <br>
+    <div class="resources-container most-popular-resources">
+      <resource-preview v-for="resource in recommendedResourcesByTags" :resource="resource" :key="resource.id" />
+    </div>
+
     <h1 class="most-popular-resources-h1">Самые популярные ресурсы сейчас</h1> <br>
     <div class="resources-container most-popular-resources">
       <resource-preview v-for="resource in popularResources" :resource="resource" :key="resource.id" />
@@ -38,6 +43,7 @@ export default {
       resources: [],
       popularResources: [],
       recommendedResources: [],
+      recommendedResourcesByTags: [],
     }
   },
   methods: {
@@ -49,9 +55,23 @@ export default {
         id: '1',
         resourceName: 'Learning C# for beginners',
         resourceType: 'Статья',
-      }
+      },
+      {
+        id: '1',
+        resourceName: 'Vue.js + C# Как начать?',
+        resourceType: 'Статья',
+      },
+      {
+        id: '1',
+        resourceName: 'Vue.js + Asp.Net Core MVC',
+        resourceType: 'Туториал',
+      },
+      {
+        id: '1',
+        resourceName: 'Курс Angular 15 Advanced',
+        resourceType: 'Курс',
+      },
     ];
-
     this.popularResources = [
       {
         id: '2',
@@ -64,7 +84,6 @@ export default {
         resourceType: 'Видео',
       }
     ];
-
     this.recommendedResources = [
       {
         id: '4',
@@ -75,7 +94,24 @@ export default {
         id: '5',
         resourceName: 'Angular from zero to hero',
         resourceType: 'Курс',
-      }
+      },
+    ];
+    this.recommendedResourcesByTags = [
+      {
+        id: '31',
+        resourceName: 'UI: все что нужно знать',
+        resourceType: 'Статья',
+      },
+      {
+        id: '32',
+        resourceName: 'Vue.js',
+        resourceType: 'Курс',
+      },
+      {
+        id: '33',
+        resourceName: 'Team Leadership',
+        resourceType: 'Курс',
+      },
     ];
   }
 }

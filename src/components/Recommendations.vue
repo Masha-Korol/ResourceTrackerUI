@@ -71,13 +71,19 @@ export default {
           id: '2',
           resourceName: 'Microservices: pros and cons',
           resourceType: 'Статья',
-          recommendedBy: 'maxim',
+          recommendedBy: 'maxim.volkov добавил в избранное',
         },
         {
           id: '4',
           resourceName: 'Project Management',
           resourceType: 'Курс',
-          recommendedBy: 'pedro.soares',
+          recommendedBy: 'pedro.soares поставил оценку 5',
+        },
+        {
+          id: '4',
+          resourceName: 'C# основы',
+          resourceType: 'Видео',
+          recommendedBy: 'alexander.karpov добавил в избранное',
         },
       ]
     };

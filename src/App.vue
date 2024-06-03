@@ -17,7 +17,7 @@ export default {
     Profile,
     Recommendations,
     UserProfile,
-    Administration
+    Administration,
   },
   data() {
 

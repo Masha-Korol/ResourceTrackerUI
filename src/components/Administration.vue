@@ -1,4 +1,5 @@
 <template>
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
   <div class="header-container">
     <div class="title-container">
       <text class="title-text">Административная страница</text>
@@ -25,6 +26,15 @@
       <div>
         <view-users :users="users"/>
       </div>
+      <br>
+      <br>
+      <br>
+      <div>
+        <view-pending-resources :resources="pendingResources"/>
+      </div>
+      <div>
+        <view-rejected-resources :resources="rejectedResources"/>
+      </div>
     </div>
   </div>
 
@@ -37,10 +47,16 @@ import AddResourceDialog from '@/components/dialogs/AddResourceDialog.vue';
 import AddUserDialog from '@/components/dialogs/AddUserDialog.vue';
 import ViewResources from '@/components/administration/ViewResources.vue';
 import ViewUsers from '@/components/administration/ViewUsers.vue';
+import ViewRecentUploads from "@/components/administration/ViewPendingResources.vue";
+import ViewPendingResources from "@/components/administration/ViewPendingResources.vue";
+import ViewRejectedResources from "@/components/administration/ViewRejectedResources.vue";
 
 export default {
   name: 'Administration',
   components: {
+    ViewRejectedResources,
+    ViewPendingResources,
+    ViewRecentUploads,
     AddResourceDialog, AddUserDialog,
     ViewResources, ViewUsers
   },
@@ -48,6 +64,8 @@ export default {
     return {
       resources: [],
       users: [],
+      pendingResources: [],
+      rejectedResources: [],
       showAddResourceDialog: false,
       showAddUserDialog: false,
     }
@@ -59,6 +77,7 @@ export default {
         resourceName: newResource.resourceName,
         resourceType: newResource.resourceType,
         resourceLink: newResource.resourceLink,
+        tags: newResource.tags,
       });
     },
     createUser(newUser) {
@@ -70,36 +89,66 @@ export default {
     }
   },
   created() {
+    this.pendingResources = [
+      {
+        id: '20',
+        resourceName: 'Что нужно знать Java-разработчику в 2024 году',
+        resourceType: 'Статья',
+        resourceLink: 'https://habr.com/ru/companies/ibs/articles/810711/',
+        tags: ['Java', 'ML'],
+      },
+      {
+        id: '21',
+        resourceName: 'Java: перспективы и тренды',
+        resourceType: 'Статья',
+        resourceLink: 'https://habr.com/ru/companies/lanit/articles/742100/',
+        tags: [],
+      },
+    ];
+    this.rejectedResources = [
+      {
+        id: '1',
+        resourceName: 'Кино-новинки 2024',
+        resourceType: 'Статья',
+        resourceLink: 'https://www.kinopoisk.ru/media/article/4008819/',
+        tags: [],
+      },
+    ];
     this.resources = [
       {
         id: '1',
         resourceName: 'Learning C# for beginners',
         resourceType: 'Статья',
-        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+        resourceLink: 'https://www.simplilearn.com/c-sharp-programming-for-beginners-article',
+        tags: ['C#'],
       },
       {
         id: '2',
         resourceName: 'Microservices: pros and cons',
         resourceType: 'Статья',
-        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+        resourceLink: 'https://cloudacademy.com/blog/microservices-architecture-challenge-advantage-drawback/',
+        tags: ['microservices', 'backend-development'],
       },
       {
         id: '3',
         resourceName: 'Machine Learning - basics',
         resourceType: 'Видео',
-        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+        resourceLink: 'https://www.youtube.com/watch?v=ukzFI9rgwfU',
+        tags: ['ML', 'algorythms'],
       },
       {
         id: '4',
         resourceName: 'Project Management',
         resourceType: 'Статья',
-        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+        resourceLink: 'https://hbr.org/topic/subject/project-management',
+        tags: ['PM', 'management'],
       },
       {
         id: '5',
         resourceName: 'Angular from zero to hero',
         resourceType: 'Курс',
-        resourceLink: 'https://stackoverflow.com/questions/1232793/javascript-set-img-src',
+        resourceLink: 'https://www.udemy.com/course/new-angular-from-zero-to-hero/',
+        tags: ['Angular', 'frontend-development', 'UI'],
       }
     ];
     this.users = [

@@ -85,7 +85,6 @@ export default {
 }
 
 .comments-title {
-  align-self: center;
   margin-top: 40px;
 }
 
@@ -117,7 +116,7 @@ export default {
   border: 1px solid #ecb21f;
   background-color: #df7931;
   float: right;
-  border-radius: 5px;
+  border-radius: 10px;
   padding-left: 40px;
   padding-right: 30px;
   padding-top: 10px;
@@ -125,7 +124,7 @@ export default {
 
 .comment {
   word-wrap: break-word;
-  width: 100%;
+  width: 50%;
   margin-top: 5%;
 }
 
@@ -154,7 +153,7 @@ export default {
 form {
   border: 1px solid rgba(16, 46, 46, 1);
   background-color: rgb(199 208 208 / 24%);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
 }
 

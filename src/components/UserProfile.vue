@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="title-container">
       <text id="profile-name" class="title-text">
-        Профиль: {{userInfo.userName}}
+        {{userInfo.userName}}
       </text>
     </div>
     <resources-header-item/>
@@ -18,11 +18,11 @@
       <resource-text-info v-for="resource in userInfo.userResources" :resource="resource" :key="resource.id"/>
     </div>
 
-    <div id="buttons" class="buttons-container">
-      <div @click="sendFriendRequest" class="user-request-block">
-        {{userInfo.isUserFriend ? 'Убрать из друзей' : 'Добавить в друзья'}}
+    <div class="company-container">
+      <div class="company-container-title">
+        Я работаю в
       </div>
-      <div class="user-request-block" v-if="userInfo.isUserFriend" @click="openChat">Отправить сообщение</div>
+      <p class="company-name" @click="this.$router.push({name: 'CompanyInfo'})">Netcracker</p>
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@
 import ResourceTextInfo from '@/components/resources/ResourceTextInfo.vue';
 
 export default {
+  name: 'UserProfile',
   components: {
     ResourceTextInfo
   },
@@ -42,20 +43,66 @@ export default {
   data() {
     return {
       isCurrentUsersPage: false,
-      userInfo: {}
+      userInfo: {
+        userResources: [],
+      }
     }
   },
   methods: {
     sendFriendRequest() {},
-    openChat() {}
   },
   created() {
-    this.userInfo = {};
+    this.userInfo = {
+      userName: 'Alexey',
+      userResources: [
+        {
+          id: '2',
+          resourceName: 'Microservices: pros and cons',
+          resourceType: 'Статья',
+        },
+        {
+          id: '3',
+          resourceName: 'Machine Learning - basics',
+          resourceType: 'Видео',
+        },
+        {
+          id: '4',
+          resourceName: 'Project Management',
+          resourceType: 'Статья',
+        },
+      ],
+    };
   }
 }
 </script>
 
 <style scoped>
+.company-name {
+  cursor: pointer;
+}
+
+.company-container-title {
+  font-weight: 900;
+  font-style: normal;
+}
+
+.company-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin-top: 40px;
+  width: 40%;
+  min-width: 40%;
+  height: max-content;
+  margin-left: 20%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
 .profile-container {
   display: flex;
   flex-direction: row;

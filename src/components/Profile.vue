@@ -19,11 +19,19 @@
      <resource-text-info v-for="resource in userInfo.userResources" :resource="resource" :key="resource.id" />
     </div>
 
-    <div class="company-container">
-      <div class="company-container-title">
-        Я работаю в
+    <div class="personal-info-container">
+      <div class="company-container">
+        <div class="company-container-title">
+          Я работаю в
+        </div>
+        <p class="company-name" @click="this.$router.push({name: 'CompanyInfo'})">DSR</p>
       </div>
-      <p class="company-name">DSR</p>
+      <div class="tags-container">
+        <div class="company-container-title">
+          Мои тэги
+        </div>
+        <p class="company-name">Java,Kotlin,C#</p>
+      </div>
     </div>
   </div>
 </template>
@@ -47,8 +55,7 @@ export default {
     }
   },
   methods: {
-    sendFriendRequest(userId) {},
-    cancelFriendRequest(userId) {}
+
   },
   created() {
     this.userInfo = {
@@ -72,9 +79,20 @@ export default {
 </script>
 
 <style scoped>
+.company-name {
+  cursor: pointer;
+}
+
 .profile-container {
   display: flex;
   flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.personal-info-container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
@@ -110,7 +128,24 @@ export default {
   flex-direction: column;
   border: 1px solid black;
   margin-top: 40px;
-  width: 40%;
+  width: 80%;
+  min-width: 40%;
+  height: max-content;
+  margin-left: 20%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin-top: 40px;
+  width: 80%;
   min-width: 40%;
   height: max-content;
   margin-left: 20%;

@@ -1,6 +1,6 @@
 <template>
   <table>
-    <caption>Ресурсы</caption>
+    <caption>Новые ресурсы</caption>
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
       <th>Id</th>
@@ -21,6 +21,9 @@
       <td>
         <div class="menu-buttons">
           <div class="menu-button">
+            <button class="approve-button">Одобрить</button>
+          </div>
+          <div class="menu-button">
             <button class="reject-button">Отклонить</button>
           </div>
           <div>
@@ -36,7 +39,7 @@
 
 <script>
 export default {
-  name: 'ViewResources',
+  name: 'ViewPendingResources',
   props: {
     resources: {
       type: Array,
@@ -63,17 +66,6 @@ export default {
 
 button {
   cursor: pointer;
-}
-
-.approve-button {
-  color: white;
-  background-color: green;
-}
-
-.reject-button {
-  color: white;
-  margin-left: 2px;
-  background-color: red;
 }
 
 table {
@@ -107,5 +99,16 @@ table td {
 
 .resource-link {
   color: black !important;
+}
+
+.approve-button {
+  color: white;
+  background-color: green;
+}
+
+.reject-button {
+  color: white;
+  margin-left: 2px;
+  background-color: red;
 }
 </style>

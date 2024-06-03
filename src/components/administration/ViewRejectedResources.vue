@@ -1,6 +1,6 @@
 <template>
   <table>
-    <caption>Ресурсы</caption>
+    <caption>Отклоненные ресурсы</caption>
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
       <th>Id</th>
@@ -21,7 +21,7 @@
       <td>
         <div class="menu-buttons">
           <div class="menu-button">
-            <button class="reject-button">Отклонить</button>
+            <button class="approve-button">Одобрить</button>
           </div>
           <div>
             <i class='far fa-edit' style='font-size:24px; margin-left: 5px; cursor: pointer;'></i>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  name: 'ViewResources',
+  name: 'ViewRejectedResources',
   props: {
     resources: {
       type: Array,
@@ -63,17 +63,6 @@ export default {
 
 button {
   cursor: pointer;
-}
-
-.approve-button {
-  color: white;
-  background-color: green;
-}
-
-.reject-button {
-  color: white;
-  margin-left: 2px;
-  background-color: red;
 }
 
 table {
@@ -107,5 +96,10 @@ table td {
 
 .resource-link {
   color: black !important;
+}
+
+.approve-button {
+  color: white;
+  background-color: green;
 }
 </style>
