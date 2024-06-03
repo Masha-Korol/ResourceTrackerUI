@@ -84,7 +84,6 @@ export default {
 .modal-header {
   padding: 2px 16px;
   background-color: #424542;
-  color: white;
 }
 
 /* Modal Body */
@@ -141,7 +140,6 @@ input[type=text], select {
 input[type=submit] {
   width: 100%;
   background-color: #424542;
-  color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;

@@ -87,10 +87,6 @@ export default {
   flex-direction: column;
 }
 
-.most-popular-resources-h1 {
-  color: white;
-}
-
 /* resources list */
 
 .resources-container {

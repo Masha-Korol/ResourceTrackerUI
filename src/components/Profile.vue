@@ -82,12 +82,11 @@ export default {
 .profile-detail-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   margin-top: 40px;
   width: 40%;
   min-width: 40%;
   height: max-content;
-  color: #FFFFFF;
   font-family: 'Inter';
   font-weight: 500;
   font-size: 40px;
@@ -109,12 +108,11 @@ export default {
 .company-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   margin-top: 40px;
   width: 40%;
   min-width: 40%;
   height: max-content;
-  color: #FFFFFF;
   margin-left: 20%;
   font-family: 'Inter';
   font-style: normal;
@@ -122,9 +120,5 @@ export default {
   font-size: 40px;
   line-height: 40px;
   text-align: center;
-}
-
-.company-name {
-  color: white;
 }
 </style>

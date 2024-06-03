@@ -59,7 +59,6 @@ table tfoot th {
 
 table caption {
   padding: .5em;
-  color: white;
 }
 
 table th,

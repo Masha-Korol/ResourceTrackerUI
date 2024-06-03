@@ -96,12 +96,11 @@ export default {
 .recommendations-detail-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   margin-top: 40px;
   width: 40%;
   min-width: 40%;
   height: max-content;
-  color: #FFFFFF;
 }
 
 .recommendations-detail-container-title {
@@ -119,7 +118,6 @@ export default {
   font-weight: 500;
   font-size: 40px;
   line-height: 48px;
-  color: #FFFFFF;
   text-align: center;
 }
 
@@ -133,7 +131,6 @@ export default {
   font-weight: 500;
   font-size: 40px;
   line-height: 40px;
-  color: #FFFFFF;
   text-align: center;
 }
 </style>

@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .friend-block {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   padding: 10px;
   margin: 10px;
   display: flex;
@@ -47,7 +47,6 @@ export default {
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
-  color: #FFFFFF;
   width: min-content;
   text-align: center;
   line-height: 50px;
@@ -56,7 +55,7 @@ export default {
 
 .user-request-block {
   margin-left: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   padding: 5px;
   font-size: 30px;
   cursor: pointer;

@@ -18,8 +18,7 @@ export default {
 
 <style scoped>
 .resource-block {
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   background: none;
   padding: 20px;
   margin: 10px;
@@ -27,7 +26,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  background: rgba(28, 28, 28, 0.5);
+  background: #df7931;
   width: 350px;
   height: 80px;
 }

@@ -18,14 +18,14 @@ export default {
 
 <style scoped>
 .resource-block {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   background: none;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  background: rgba(28, 28, 28, 0.5);
+  background: #df7931;
 }
 
 .recommended-by-clock {

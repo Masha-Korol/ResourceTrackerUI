@@ -66,7 +66,7 @@ export default {
 .profile-detail-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   margin-top: 40px;
   width: 40%;
   min-width: 40%;
@@ -86,19 +86,18 @@ export default {
   font-weight: 500;
   font-size: 40px;
   line-height: 48px;
-  color: #FFFFFF;
   text-align: center;
 }
 
 .resource-block {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   background: none;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  background: rgba(28, 28, 28, 0.5);
+  background: #df7931;
 }
 
 /* buttons */
@@ -109,7 +108,6 @@ export default {
   font-weight: 500;
   font-size: 40px;
   line-height: 40px;
-  color: #FFFFFF;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -125,11 +123,10 @@ export default {
 
 .user-request-block {
   margin-left: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
   padding: 5px;
   font-size: 30px;
   cursor: pointer;
-  color: black;
   background: #FFFFFF;
   opacity: 80%;
   border-radius: 10px;

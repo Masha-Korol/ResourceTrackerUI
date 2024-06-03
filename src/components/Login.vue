@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import {authenticateUser} from '@/util/authentication-helper';
 
 export default {
@@ -53,8 +52,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #df7931;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
