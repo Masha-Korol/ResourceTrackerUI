@@ -1,16 +1,9 @@
 <template>
   <div class="comments-container">
-    <div id="comments-section" class="comments-section col-sm-5 col-md-6 col-12 pb-4">
-      <div class="comments-title">
-        <h1>Комментарии</h1>
-      </div>
-      <comment v-for="comment in resourceComments" :comment="comment" :key="comment.id"/>
-    </div>
-
     <div class="send-comment-form col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
       <form id="algin-form">
         <div class="form-group">
-          <h4 class="leave-comment-h4">Оставьте коментарий</h4>
+          <h2 class="leave-comment-h4">Оставьте коментарий</h2>
           <textarea v-model="newComment.commentText" v-bind:class="isCommentEmpty ? 'comment-text-empty-error' : ''" name="msg" ref="commentTexterea" cols="30" rows="5" class="form-control" required></textarea>
         </div>
         <div class="form-group">
@@ -19,6 +12,13 @@
           </div>
         </div>
       </form>
+    </div>
+
+    <div id="comments-section" class="comments-section col-sm-5 col-md-6 col-12 pb-4">
+      <div class="comments-title">
+        <h1 class="comments-header">Комментарии</h1>
+      </div>
+      <comment v-for="comment in resourceComments" :comment="comment" :key="comment.id"/>
     </div>
   </div>
 </template>
@@ -72,13 +72,21 @@ export default {
 
 .comments-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 50px;
+}
+
+.comments-header {
+  font-size: 40px;
+}
+
+#algin-form {
+  width: 50%;
 }
 
 .comments-title {
   align-self: center;
-  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .comments-section {
@@ -150,8 +158,8 @@ form {
   padding: 20px;
 }
 
-#algin-form {
-  width: 300px;
+textarea {
+  width: 100%;
 }
 
 .btn-comment-form {

@@ -41,7 +41,7 @@ export default {
   height: 46px;
   padding: 0 10px;
   margin-left: 40px;
-  width: 200px;
+  width: 300px;
 }
 
 .rate:not(:checked) > input {
@@ -56,7 +56,7 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 50px;
   color :#ccc;
 }
 

@@ -43,8 +43,9 @@ body {
     font-family: 'Inter';
     font-style: italic;
     font-weight: 300;
-    font-size: 70px;
+    font-size: 40px;
     line-height: 116px;
+    margin-top: 15px;
 }
 
 .header-item-text {

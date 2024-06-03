@@ -12,10 +12,19 @@
 
   <div class="resource-container">
     <div class="resource-main-info-container">
-      <div class="resource-block" @click="this.$router.push({name: 'ResourceInfo', params: { id: this.resource.id}})">
+      <div class="resource-block-first" @click="this.$router.push({name: 'ResourceInfo', params: { id: this.resource.id}})">
         <div class="resource-info-block">
-          <a href="https://stackoverflow.com/questions/1232793/javascript-set-img-src">
-            <u>{{ resource.resourceName }} - {{ resource.resourceType }}</u>
+          <span>{{ resource.resourceName }}</span> <br>
+          <span class="resource-type"><i class="resource-type-span">{{ resource.resourceType }}</i></span>
+        </div>
+        <div class="resource-block-summary">
+          <p>Одной из многих причин, почему мне нравится работать именно с функциональным программированием, является высокий уровень абстракции. Это связано с тем, что в конечном итоге мы имеем дело с более читаемым и лаконичным кодом, что, несомненно, способствует сближению с логикой предметной области.
+            <br> <br>
+            В данной статье большее внимание уделяется на четыре вещи, представленные в Java 8, которые помогут вам овладеть новым уровнем абстракции.</p>
+        </div>
+        <div class="see-resource-block">
+          <a class="see-resource" href="https://habr.com/ru/articles/256057/">
+            <u>Читать статью полностью</u>
           </a>
         </div>
       </div>
@@ -28,10 +37,11 @@
       <comments :resource-comments="resource.resourceComments" @createComment="createComment"/>
     </div>
 
-    <div class="similar-resources-recommendations">
-      <h1 class="similar-resources-recommendations-title">Похожие ресурсы</h1>
-      <div class="resource-block">
-        <div class="recommended-resource-info-block" v-for="recommendedResource in similarResourcesRecommended">
+    <br><br>
+    <h1 class="similar-resources-recommendations-title">Похожие ресурсы</h1>
+    <div class="resource-block-aa">
+      <div class="resource-block" v-for="recommendedResource in similarResourcesRecommended">
+        <div class="recommended-resource-info-block">
           <a href="https://stackoverflow.com/questions/1232793/javascript-set-img-src">
             <u>{{ recommendedResource.resourceName }}</u>
           </a>
@@ -76,7 +86,7 @@ export default {
   created() {
     this.resource = {
       id: '1',
-      resourceName: 'Введение в Java',
+      resourceName: 'Java 8: Овладейте новым уровнем абстракции',
       resourceType: 'Статья',
       resourceComments: [
         {
@@ -100,6 +110,16 @@ export default {
         id: '6',
         resourceName: 'Курс по Java для продвинутых',
         resourceType: 'Курс',
+      },
+      {
+        id: '10',
+        resourceName: 'Spring for production development',
+        resourceType: 'Видео',
+      },
+      {
+        id: '11',
+        resourceName: 'Другие возможности Java',
+        resourceType: 'Статья',
       }
     ]
   }
@@ -111,7 +131,7 @@ export default {
 
 .resource-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 30px;
 }
 
@@ -125,22 +145,56 @@ img {
   flex-direction: column;
 }
 
-.resource-block {
-  border: 1px solid black;
+.resource-block-summary {
+  font-size: x-large;
+  text-align: justify;
+  padding: 0 30px 0 30px;
+}
+
+.see-resource-block {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.see-resource {
+  font-size: xx-large;
+  padding-left: 30px;
+}
+
+.resource-block-first {
+  border-radius: 5px;
+  min-width: 400px;
   background: none;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
+  background: #df7931;
+  height: min-content;
+}
+
+.resource-block-aa {
+  display: flex;
+  flex-direction: row;
+}
+
+.resource-block {
+  border-radius: 5px;
+  width: min-content;
+  min-width: 400px;
+  background: none;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
   cursor: pointer;
   background: #df7931;
-  width: 350px;
-  height: 100px;
+  height: min-content;
+  min-height: 120px;
 }
 
 .resource-info-block {
   font-size: xx-large;
-  margin-top: 8%;
   align-self: center;
 }
 
@@ -148,6 +202,10 @@ img {
   font-size: xx-large;
   align-self: center;
   text-align: center;
+}
+
+.resource-type {
+  margin-left: 40%;
 }
 
 .recommended-resource-type {
@@ -160,19 +218,24 @@ img {
   flex-direction: row;
 }
 
+.fa-bookmark:before {
+  font-size: 30px;
+}
+
 .favorite-icon {
   color: #ffc700;
-  margin-top: 16px;
+  margin-top: 24px;
   margin-left: 20px;
   cursor: pointer;
 }
 
-.similar-resources-recommendations {
-  flex: 1;
-  margin-left: 600px;
-}
-
 .similar-resources-recommendations-title {
   margin-left: 60px;
+  align-self: center;
+  font-size: 40px;
+}
+
+.resource-type-span {
+  font-size: smaller;
 }
 </style>
