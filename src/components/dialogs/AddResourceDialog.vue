@@ -87,13 +87,13 @@ export default {
 /* Modal Header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #424542;
+  background-color: #f2f2f2;
 }
 
 /* Modal Body */
 .modal-body {
   padding: 2px 16px;
-  background-color: #f2f2f2;
+  background-color: #fefefe;
 }
 
 /* Modal Content */
@@ -143,7 +143,7 @@ input[type=text], select {
 
 input[type=submit] {
   width: 100%;
-  background-color: #424542;
+  background-color: #f2f2f2;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -152,12 +152,12 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #df7931;
 }
 
 .form-body {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: #fefefe;
   padding: 20px;
 }
 
