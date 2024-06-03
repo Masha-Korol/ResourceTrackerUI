@@ -25,6 +25,7 @@
 
 <script>
 import Comment from '@/components/ui-components/Comment.vue';
+import {format} from 'date-fns'
 export default {
   components: {
     Comment
@@ -38,7 +39,9 @@ export default {
   data() {
     return {
       newComment: {
-        commentText: ''
+        commentText: '',
+        userName: '',
+        date: '',
       },
       isCommentEmpty: false
     }
@@ -50,6 +53,9 @@ export default {
       this.validateForm();
 
       if (!this.isCommentEmpty) {
+        this.newComment.userName = 'Masha';
+        this.newComment.date = format(new Date(), 'dd/MM/yyyy');
+        this.newComment.text = this.newComment.commentText;
         this.$emit('createComment', this.newComment);
         this.newComment.commentText = '';
       }
@@ -67,7 +73,6 @@ export default {
 .comments-container {
   display: flex;
   flex-direction: row;
-  color: aliceblue;
   margin-top: 50px;
 }
 
@@ -102,7 +107,7 @@ export default {
 
 .darker {
   border: 1px solid #ecb21f;
-  background-color: rgb(40 51 51 / 24%);
+  background-color: #df7931;
   float: right;
   border-radius: 5px;
   padding-left: 40px;
@@ -178,9 +183,5 @@ textarea:invalid {
 
 textarea:valid {
   border: 2px solid black;
-}
-
-.comment-text-empty-error {
-  border: 3px solid #f00 !important;
 }
 </style>
