@@ -78,6 +78,7 @@ export default {
 
 .comments-header {
   font-size: 40px;
+  height: 0;
 }
 
 #algin-form {
@@ -104,7 +105,7 @@ export default {
   padding-top: 2px;
   padding-bottom: 2px;
   text-align: center;
-  background-color: #ecb21f;
+  background-color: #df7931;
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
   border-width: 1px;
@@ -113,19 +114,17 @@ export default {
 }
 
 .darker {
-  border: 1px solid #ecb21f;
+  border: 1px solid #df7931;
   background-color: #df7931;
   float: right;
   border-radius: 10px;
-  padding-left: 40px;
-  padding-right: 30px;
-  padding-top: 10px;
+  padding-left: 20px;
 }
 
 .comment {
   word-wrap: break-word;
   width: 50%;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 .comment h4, .comment span, .darker h4, .darker span {
@@ -163,7 +162,6 @@ textarea {
 
 .btn-comment-form {
   border: 2px solid black;
-  background-color: white;
   color: black;
   padding: 14px 28px;
   cursor: pointer;

@@ -1,32 +1,24 @@
 <template>
   <table>
-    <caption>Новые ресурсы</caption>
+    <caption>Подборки</caption>
     <div class="topnav" v-if="!isTableHidden">
       <input type="text" placeholder="Поиск..">
     </div>
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
       <th>Название</th>
-      <th>Тип</th>
-      <th>Ссылка</th>
-      <th>Тэги</th>
+      <th>Описание</th>
+      <th>Ресурсы</th>
       <th></th>
     </tr>
     </thead>
     <tbody v-if="!isTableHidden">
-    <tr v-for="resource in resources">
-      <td>{{ resource.resourceName }}</td>
-      <td>{{ resource.resourceType }}</td>
-      <td><a class="resource-link"><u>{{ resource.resourceLink }}</u></a></td>
-      <td>{{ resource.tags.join(', ') }}</td>
+    <tr v-for="selection in selections">
+      <td>{{ selection.selectionName }}</td>
+      <td>{{ selection.description }}</td>
+      <td><div v-for="resource in selection.resources"><u>{{resource}}</u><br></div></td>
       <td>
         <div class="menu-buttons">
-          <div class="menu-button">
-            <button class="approve-button">Одобрить</button>
-          </div>
-          <div class="menu-button">
-            <button class="reject-button">Отклонить</button>
-          </div>
           <div style="display: flex;">
             <i class='far fa-edit' style='font-size:24px; margin-left: 5px; cursor: pointer;'></i>
             <i style="font-size:24px; margin-left: 10px; cursor: pointer;" class="fa">&#xf00d;</i>
@@ -40,9 +32,9 @@
 
 <script>
 export default {
-  name: 'ViewPendingResources',
+  name: 'ViewSelections',
   props: {
-    resources: {
+    selections: {
       type: Array,
       required: true
     },
@@ -67,6 +59,17 @@ export default {
 
 button {
   cursor: pointer;
+}
+
+.approve-button {
+  color: white;
+  background-color: green;
+}
+
+.reject-button {
+  color: white;
+  margin-left: 2px;
+  background-color: red;
 }
 
 table {
@@ -101,18 +104,6 @@ table td {
 .resource-link {
   color: black !important;
 }
-
-.approve-button {
-  color: white;
-  background-color: green;
-}
-
-.reject-button {
-  color: white;
-  margin-left: 2px;
-  background-color: red;
-}
-
 /* Style the search box inside the navigation bar */
 .topnav input[type=text] {
   padding: 6px;

@@ -3,73 +3,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" @click="this.$emit('update:show', false)">&times;</span>
-        <h2>Добавить ресурс</h2>
+        <h2>Создать тэг</h2>
       </div>
       <div class="modal-body">
         <div class="form-body">
           <form>
-            <label for="resource-name">Название</label>
-            <input type="text" id="resource-name" name="resourceName" placeholder="" v-model="newResource.resourceName">
-
-            <label for="resource-type">Тип</label>
-            <input type="text" id="resource-type" name="resourceType" placeholder="" v-model="newResource.resourceType">
-
-            <label for="resource-link">Ссылка</label>
-            <input type="text" id="resource-link" name="resourceLink" placeholder="" v-model="newResource.resourceLink">
-
-            <label for="resource-link">Специализации</label>
-            <div class="form_label">
-              <div class="multiselect_block">
-                <div class="field_multiselect">
-                  <button
-                      v-for="optionSpec in selectedOptionsSpec"
-                      :key="optionSpec"
-                      type="button"
-                      class="btn_multiselect"
-                      @click="deselectOptionSpec(optionSpec)">
-                    {{ optionSpec }}
-                  </button>
-                </div>
-                <input id="checkbox-2" class="multiselect_checkbox" type="checkbox">
-                <label for="checkbox-2" class="multiselect_label"></label>
-                <select @change="handleChangeSpec" id="select-2" class="field_select" name="spec" multiple style="@media (min-width: 768px) { height: calc(4 * 38px)}">
-                  <option value="Backend">Backend</option>
-                  <option value="Frontend">Frontend</option>
-                  <option value="QA">QA</option>
-                  <option value="Project Management">Project Management</option>
-                  <option value="Solution Architect">Solution Architect</option>
-                  <option value="Embedded Developer">Embedded Developer</option>
-                </select>
-              </div>
-              <span class="error_text"></span>
-            </div>
-
-            <label for="resource-link">Тэги</label>
-            <div class="form_label">
-              <div class="multiselect_block">
-                <div class="field_multiselect">
-                  <button
-                      v-for="option in selectedOptions"
-                      :key="option"
-                      type="button"
-                      class="btn_multiselect"
-                      @click="deselectOption(option)">
-                    {{ option }}
-                  </button>
-                </div>
-                <input id="checkbox-1" class="multiselect_checkbox" type="checkbox">
-                <label for="checkbox-1" class="multiselect_label"></label>
-                <select @change="handleChange" id="select-1" class="field_select" name="technology" multiple style="@media (min-width: 768px) { height: calc(4 * 38px)}">
-                  <option value="HTML">HTML</option>
-                  <option value="CSS">CSS</option>
-                  <option value="JavaScript">JavaScript</option>
-                  <option value="System Administration">System Administration</option>
-                  <option value="Java">Java</option>
-                  <option value="C#">C#</option>
-                </select>
-              </div>
-              <span class="error_text"></span>
-            </div>
+            <label for="tag-name">Название</label>
+            <input type="text" id="tag-name" name="tagName" placeholder="" v-model="newTag.tagName">
 
             <input type="submit" value="Отправить" @click="createResource">
 
@@ -87,7 +27,7 @@
 
 <script>
 export default {
-  name: 'add-resource-dialog',
+  name: 'add-tag-dialog',
   props: {
     show: {
       type: Boolean,
@@ -96,15 +36,10 @@ export default {
   },
   data() {
     return {
-      newResource: {
-        resourceName: '',
-        resourceType: '',
-        resourceLink: '',
-        tags: [],
+      newTag: {
+        tagName: '',
       },
       errors: [],
-      selectedOptions: [],
-      selectedOptionsSpec: [],
     }
   },
   methods: {
@@ -114,57 +49,18 @@ export default {
       this.validateForm();
 
       if (this.errors.length === 0) {
-        this.newResource.tags = this.selectedOptions;
-        this.$emit('createResource', this.newResource);
-        this.newResource.resourceName = '';
-        this.newResource.resourceType = '';
-        this.newResource.resourceLink = '';
-        this.selectedOptions = [];
-        this.selectedOptionsSpec = [];
+        this.$emit('createTag', this.newTag);
+        this.newTag.tagName = '';
         this.$emit('update:show', false);
       }
     },
     validateForm() {
       this.errors = [];
 
-      if (!this.newResource.resourceName) {
-        this.errors.push('Необходимо указать название ресурса.');
-      }
-
-      if (!this.newResource.resourceType) {
-        this.errors.push('Необходимо указать тип ресурса.');
-      }
-
-      if (!this.newResource.resourceLink) {
-        this.errors.push('Необходимо указать ссылку на ресурс.');
+      if (!this.newTag.tagName) {
+        this.errors.push('Необходимо указать название тэга.');
       }
     },
-    handleChange(event) {
-      this.selectedOptions = Array.from(event.target.selectedOptions).map(option => option.value);
-      console.log(`selected options: ${JSON.stringify(this.selectedOptions)}`);
-    },
-    deselectOption(optionToRemove) {
-      this.selectedOptions = this.selectedOptions.filter(option => option !== optionToRemove);
-      const selectElement = this.$el.querySelector('.field_select');
-      Array.from(selectElement.options).forEach(option => {
-        if (option.value === optionToRemove) {
-          option.selected = false;
-        }
-      });
-    },
-    handleChangeSpec(event) {
-      this.selectedOptionsSpec = Array.from(event.target.selectedOptions).map(option => option.value);
-      console.log(`selected options specialties: ${JSON.stringify(this.selectedOptionsSpec)}`);
-    },
-    deselectOptionSpec(optionToRemove) {
-      this.selectedOptionsSpec = this.selectedOptionsSpec.filter(option => option !== optionToRemove);
-      const selectElement = this.$el.querySelector('.field_select');
-      Array.from(selectElement.options).forEach(option => {
-        if (option.value === optionToRemove) {
-          option.selected = false;
-        }
-      });
-    }
   },
 }
 </script>
@@ -418,5 +314,63 @@ input[type=submit]:hover {
 
 .error-text {
   color: red;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.dropbtn {
+  background-color: #FFBF00;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 3px;
+  padding: 0 16px 0 16px;
 }
 </style>

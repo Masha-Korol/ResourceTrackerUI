@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div class="title-container">
-      <text class="title-text">Рекомендации</text>
+      <text class="title-text"><b style="font-size: 60px;">Рекомендации</b></text>
     </div>
     <resources-header-item/>
     <profile-header-item/>

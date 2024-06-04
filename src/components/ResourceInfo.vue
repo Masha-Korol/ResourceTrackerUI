@@ -3,7 +3,7 @@
 
   <div class="header-container">
     <div class="title-container">
-      <text id="band-name" class="title-text">{{ resource.resourceName }}</text>
+      <text id="band-name" class="title-text"><b>{{resource.resourceName}}</b></text>
     </div>
     <resources-header-item/>
     <recommendations-header-item/>
@@ -16,6 +16,15 @@
         <div class="resource-info-block">
           <span>{{ resource.resourceName }}</span> <br>
           <span class="resource-type"><i class="resource-type-span">{{ resource.resourceType }}</i></span>
+          <br>
+          <div style="margin-left: 180px; font-size: large;">
+            <span>Тэги:</span>
+            <button v-for="tag in resource.tags" class="dropbtn">{{tag}}</button>
+          </div>
+          <div style="margin-left: 60px; font-size: large;">
+            <span>Специализации:</span>
+            <button v-for="specialty in resource.specialties" class="dropbtn">{{specialty}}</button>
+          </div>
         </div>
         <div class="resource-block-summary">
           <p>Одной из многих причин, почему мне нравится работать именно с функциональным программированием, является высокий уровень абстракции. Это связано с тем, что в конечном итоге мы имеем дело с более читаемым и лаконичным кодом, что, несомненно, способствует сближению с логикой предметной области.
@@ -32,6 +41,7 @@
       <div class="rating-and-favorite-block">
         <rating :mark="resource.mark" @onMarkChange="onMarkChange"/>
         <div><i class="fas fa-bookmark favorite-icon"></i></div>
+        <div><button class="dropbtn-1">Рекомендовать от DSR</button></div>
       </div>
 
       <comments :resource-comments="resource.resourceComments" @createComment="createComment"/>
@@ -73,6 +83,8 @@ export default {
         mark: 1,
         resourceComments: [],
         similarResourcesRecommended: [],
+        tags: [],
+        specialties: [],
       },
       commentText: ''
     }
@@ -88,6 +100,8 @@ export default {
       id: '1',
       resourceName: 'Java 8: Овладейте новым уровнем абстракции',
       resourceType: 'Статья',
+      tags: ['Java', 'Java 8', 'Backend'],
+      specialties: ['Backend Engineer', 'Java Developer'],
       resourceComments: [
         {
           id: '1',
@@ -235,5 +249,30 @@ img {
 
 .resource-type-span {
   font-size: smaller;
+}
+
+.dropbtn {
+  background-color: #FFBF00;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 3px;
+  padding: 0 16px 0 16px;
+}
+
+.dropbtn-1 {
+  background-color: #df7931;
+  font-size: 25px;
+  cursor: pointer;
+  border: 3px solid black;
+  border-radius: 10px;
+  height: 80px;
+  margin-top: 5px;
+  padding: 0 16px 0 16px;
+  width: 210px;
+  margin-left: 30px;
 }
 </style>

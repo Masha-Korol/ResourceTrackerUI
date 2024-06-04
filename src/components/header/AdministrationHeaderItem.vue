@@ -17,7 +17,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 80px 44px 60px;
+  padding: 30px 44px 60px;
   margin-left: auto;
 }
 </style>

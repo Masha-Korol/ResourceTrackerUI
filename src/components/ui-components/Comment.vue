@@ -20,11 +20,12 @@ export default {
 
 <style scoped>
 .comment-author {
-  font-size: 40px;
+  font-size: 30px;
+  height: 20px;
 }
 
 .comment-date {
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .comment-text {

@@ -3,31 +3,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" @click="this.$emit('update:show', false)">&times;</span>
-        <h2>Добавить пользователя</h2>
+        <h2>Добавить проект</h2>
       </div>
       <div class="modal-body">
         <div class="form-body">
           <form>
-            <label for="user-name">Имя</label>
-            <input type="text" id="user-name" name="userName" placeholder="" v-model="newUser.userName">
+            <label for="company-name">Название</label>
+            <input type="text" id="company-name" name="companyName" placeholder="" v-model="newCompany.companyName">
 
-            <label for="user-password">Пароль</label>
-            <input type="text" id="user-password" name="userPassword" placeholder="" v-model="newUser.password">
+            <label for="resource-link">Ресурсы</label>
+            <div class="form_label">
+              <div class="topnav">
+                <input type="text" placeholder="Поиск..">
+              </div>
+              <button v-for="resource in selectedResources" class="dropbtn">{{resource}}</button>
+              <span class="error_text"></span>
+            </div>
 
-            <label for="is-admin">Администратор</label>
-            <input type="checkbox" id="is-admin" name="isAdmin" v-model="newUser.isAdmin">
-            <br>
-
-            <label for="is-company-authority">Представитель компании</label>
-            <input type="checkbox" id="is-company-authority" name="isCompanyAuthority" v-model="newUser.isCompanyAuthority">
-            <select name="dog-names" id="dog-names">
-              <option value="rigatoni">DSR</option>
-              <option value="dave">Netcracker</option>
-              <option value="pumpernickel">DataArt</option>
-              <option value="reeses">RedCollar</option>
-            </select>
-
-            <input type="submit" value="Отправить" @click="createUser">
+            <input type="submit" value="Отправить" @click="createCompany">
 
             <p v-if="errors.length">
               <ul>
@@ -43,7 +36,7 @@
 
 <script>
 export default {
-  name: 'add-user-dialog',
+  name: 'add-project-dialog',
   props: {
     show: {
       type: Boolean,
@@ -52,39 +45,35 @@ export default {
   },
   data() {
     return {
-      newUser: {
-        userName: '',
-        password: '',
-        isAdmin: false,
-        isCompanyAuthority: false,
+      newCompany: {
+        companyName: '',
+        description: '',
       },
       errors: [],
     }
   },
   methods: {
-    createUser(event) {
+    createCompany(event) {
       event.preventDefault();
 
       this.validateForm();
 
       if (this.errors.length === 0) {
-        this.$emit('createUser', this.newUser);
-        this.newUser.userName = '';
-        this.newUser.password = '';
-        this.newUser.isAdmin = false;
-        this.newUser.isCompanyAuthority = false;
+        this.$emit('createCompany', this.newCompany);
+        this.newCompany.companyName = '';
+        this.newCompany.description = '';
         this.$emit('update:show', false);
       }
     },
     validateForm() {
       this.errors = [];
 
-      if (!this.newUser.userName) {
-        this.errors.push('Необходимо указать имя пользователя.');
+      if (!this.newCompany.companyName) {
+        this.errors.push('Необходимо указать название компании.');
       }
 
-      if (!this.newUser.password) {
-        this.errors.push('Необходимо указать пароль пользователя.');
+      if (!this.newCompany.description) {
+        this.errors.push('Необходимо указать описание компании.');
       }
     }
   }

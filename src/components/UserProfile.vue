@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="title-container">
       <text id="profile-name" class="title-text">
-        {{userInfo.userName}}
+        <b style="font-size: 60px;">{{userInfo.userName}}</b>
       </text>
     </div>
     <resources-header-item/>
