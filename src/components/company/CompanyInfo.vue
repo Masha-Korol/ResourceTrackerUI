@@ -50,7 +50,7 @@
         <div class="resource-block" v-for="recommendedResource in company.recommendedResources">
           <div class="recommended-resource-info-block">
             <a href="https://stackoverflow.com/questions/1232793/javascript-set-img-src">
-              <u>{{ recommendedResource.resourceName }}</u>
+              <u>{{recommendedResource.resourceName}}</u>
             </a>
             <p class="recommended-resource-type"><i>{{ recommendedResource.resourceType }}</i></p>
             <p class="recommended-resource-type-text">

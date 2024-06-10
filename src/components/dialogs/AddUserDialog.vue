@@ -14,13 +14,22 @@
             <label for="user-password">Пароль</label>
             <input type="text" id="user-password" name="userPassword" placeholder="" v-model="newUser.password">
 
+            <label for="user-password">Работник компании</label>
+            <select name="dog-names" id="dog-names">
+              <option value="rigatoni">DSR</option>
+              <option value="dave">Netcracker</option>
+              <option value="pumpernickel">DataArt</option>
+              <option value="reeses">RedCollar</option>
+            </select>
+
             <label for="is-admin">Администратор</label>
             <input type="checkbox" id="is-admin" name="isAdmin" v-model="newUser.isAdmin">
             <br>
 
             <label for="is-company-authority">Представитель компании</label>
-            <input type="checkbox" id="is-company-authority" name="isCompanyAuthority" v-model="newUser.isCompanyAuthority">
-            <select name="dog-names" id="dog-names">
+            <input type="checkbox" id="is-company-authority" name="isCompanyAuthority" v-model="newUser.isCompanyAuthority"
+            @click="showChooseCompanyAuth = !showChooseCompanyAuth">
+            <select name="dog-names" id="dog-names" v-show="showChooseCompanyAuth">
               <option value="rigatoni">DSR</option>
               <option value="dave">Netcracker</option>
               <option value="pumpernickel">DataArt</option>
@@ -59,6 +68,7 @@ export default {
         isCompanyAuthority: false,
       },
       errors: [],
+      showChooseCompanyAuth: false,
     }
   },
   methods: {

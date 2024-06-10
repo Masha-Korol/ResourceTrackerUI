@@ -7,6 +7,7 @@
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
       <th>Название</th>
+      <th>Автор</th>
       <th>Описание</th>
       <th>Ресурсы</th>
       <th></th>
@@ -15,6 +16,7 @@
     <tbody v-if="!isTableHidden">
     <tr v-for="selection in selections">
       <td>{{ selection.selectionName }}</td>
+      <td>{{ selection.author }}</td>
       <td>{{ selection.description }}</td>
       <td><div v-for="resource in selection.resources"><u>{{resource}}</u><br></div></td>
       <td>

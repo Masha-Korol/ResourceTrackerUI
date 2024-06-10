@@ -64,7 +64,7 @@
       <add-company-dialog v-model:show="showAddCompanyDialog"/>
     </div>
     <div style="display: flex; margin-left: 100px; height: min-content;">
-      <view-statistics/>
+      <view-statistics :stats="stats"/>
     </div>
   </div>
 </template>
@@ -107,6 +107,7 @@ export default {
       users: [],
       companies: [],
       selections: [],
+      stats: [],
       pendingResources: [],
       rejectedResources: [],
       tags: [],
@@ -226,6 +227,11 @@ export default {
     this.tags = [
       {id: '1', tagName: 'ML'}, {id: '2', tagName: 'Java'}, {id: '3', tagName: 'Spring'}, {id: '4', tagName: 'AI'},
       {id: '5', tagName: 'Angular'}, {id: '6', tagName: 'QA'}, {id: '7', tagName: 'PM'}, {id: '8', tagName: 'Vue.js'},
+    ];
+    this.stats = [
+      {resource: 'Как стать Vue разработчиком за месяц', favorite: 3, link: 10, mark5: 5, mark4: 15, mark3: 10, mark2: 0, mark1: 0},
+      {resource: 'Geeks: Vue.js covered', favorite: 13, link: 22, mark5: 15, mark4: 15, mark3: 4, mark2: 0, mark1: 1},
+      {resource: 'Производительность Java: нюансы', favorite: 20, link: 33, mark5: 12, mark4: 19, mark3: 0, mark2: 2, mark1: 0},
     ];
   }
 }

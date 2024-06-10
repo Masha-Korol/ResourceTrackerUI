@@ -3,18 +3,26 @@
     <caption>Статистика</caption>
     <thead @click="isTableHidden = !isTableHidden">
     <tr>
-      <th>Ресурс/Специализация</th>
-      <th>Действие</th>
-      <th>Период времени</th>
-      <th></th>
+      <th>Ресурс</th>
+      <th>Добавлен в избранное</th>
+      <th>Нажатий на ссылку</th>
+      <th>Оценка 5</th>
+      <th>Оценка 4</th>
+      <th>Оценка 3</th>
+      <th>Оценка 2</th>
+      <th>Оценка 1</th>
     </tr>
     </thead>
     <tbody v-if="!isTableHidden">
-    <tr>
-      <td>dropdown</td>
-      <td>dropdown</td>
-      <td>dropdown</td>
-      <td>result</td>
+    <tr v-for="stat in stats">
+      <td>{{stat.resource}}</td>
+      <td>{{stat.favorite}}</td>
+      <td>{{stat.link}}</td>
+      <td>{{stat.mark5}}</td>
+      <td>{{stat.mark4}}</td>
+      <td>{{stat.mark3}}</td>
+      <td>{{stat.mark2}}</td>
+      <td>{{stat.mark1}}</td>
     </tr>
     </tbody>
   </table>
@@ -23,6 +31,12 @@
 <script>
 export default {
   name: 'ViewStatistics',
+  props: {
+    stats: {
+      type: Array,
+      required: true
+    },
+  },
   data() {
     return {
       isTableHidden: true

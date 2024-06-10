@@ -146,7 +146,7 @@ export default {
   created() {
     this.resources = [
       {id: '1', resourceName: 'Learning C# for beginners', resourceType: 'Статья', tags: ['Backend', 'С#']},
-      {id: '1', resourceName: 'Vue.js + C# Как начать?', resourceType: 'Статья', tags: ['C#', 'Vue.js', 'Backend', 'Frontend']},
+      {id: '1', resourceName: 'Java 8: Овладейте новым уровнем абстракции?', resourceType: 'Статья', tags: ['Java', 'Java 8', 'Backend']},
       {id: '1', resourceName: 'Vue.js + Asp.Net Core MVC', resourceType: 'Туториал', tags: ['Vue.js', 'Asp.Net Core', 'MVC']},
       {id: '1', resourceName: 'Курс Angular 15 Advanced', resourceType: 'Курс', tags: ['Angular', 'Angular 15', 'Frontend']},
       {id: '1', resourceName: 'Vue.js vs Angular', resourceType: 'Статья', tags: ['Vue.js', 'Angular', 'Frontend']},
