@@ -26,6 +26,10 @@
             <input type="checkbox" id="is-admin" name="isAdmin" v-model="newUser.isAdmin">
             <br>
 
+            <label for="is-admin-selec">Составитель подборок</label>
+            <input type="checkbox" id="is-admin-selec" name="isAdminSel" v-model="newUser.isAdminSel">
+            <br>
+
             <label for="is-company-authority">Представитель компании</label>
             <input type="checkbox" id="is-company-authority" name="isCompanyAuthority" v-model="newUser.isCompanyAuthority"
             @click="showChooseCompanyAuth = !showChooseCompanyAuth">
@@ -65,6 +69,7 @@ export default {
         userName: '',
         password: '',
         isAdmin: false,
+        isAdminSel: false,
         isCompanyAuthority: false,
       },
       errors: [],

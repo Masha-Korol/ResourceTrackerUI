@@ -24,6 +24,9 @@
         <div class="button-container">
           <button class="add-data-button" @click="showAddSelectionDialog = true">Создать подборку</button>
         </div>
+        <div class="button-container">
+          <button class="add-data-button" @click="showAddTagDialog = true">Создать тэг</button>
+        </div>
       </div>
 
       <div class="data-view-container">
