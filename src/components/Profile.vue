@@ -17,6 +17,10 @@
         Мои ресурсы
       </div>
      <resource-text-info v-for="resource in userInfo.userResources" :resource="resource" :key="resource.id" />
+
+      <div class="button-container">
+        <button class="add-data-button">Добавить ресурс</button>
+      </div>
     </div>
 
     <div class="personal-info-container">
@@ -152,6 +156,15 @@ export default {
   margin-bottom: 50px;
   font-weight: 900;
   font-style: normal;
+}
+
+.add-data-button {
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+  min-width: 300px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .company-container-title {
