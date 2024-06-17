@@ -78,25 +78,12 @@ export default {
 
   },
   created() {
-    this.userInfo = {
-      userName: 'Masha',
-      isAdmin: true,
-      projects: ['AWSDevices', 'RealEmbedded', 'BookShop'],
-      tags: ['Java', 'Maven', 'Spring', 'AWS'],
-      specialties: ['Backend Engineer', 'AWS Could Developer', 'Frontend Developer'],
-      userResources: [
-        {
-          id: '2',
-          resourceName: 'Microservices: pros and cons',
-          resourceType: 'Статья',
-        },
-        {
-          id: '3',
-          resourceName: 'Machine Learning - basics',
-          resourceType: 'Видео',
-        }
-      ]
-    };
+    axios
+        .get(`${BACKEND_URL}/users`, {headers: authHeader()})
+        .then((response) => {
+          this.userInfo = response.data;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>

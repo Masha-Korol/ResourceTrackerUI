@@ -48,30 +48,13 @@ export default {
       }
     }
   },
-  methods: {
-    sendFriendRequest() {},
-  },
   created() {
-    this.userInfo = {
-      userName: 'Alexey',
-      userResources: [
-        {
-          id: '2',
-          resourceName: 'Microservices: pros and cons',
-          resourceType: 'Статья',
-        },
-        {
-          id: '3',
-          resourceName: 'Machine Learning - basics',
-          resourceType: 'Видео',
-        },
-        {
-          id: '4',
-          resourceName: 'Project Management',
-          resourceType: 'Статья',
-        },
-      ],
-    };
+    axios
+        .get(`${BACKEND_URL}/users/${this.userId}`, {headers: authHeader()})
+        .then((response) => {
+          this.userInfo = response.data;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>

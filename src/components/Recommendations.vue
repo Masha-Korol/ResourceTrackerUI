@@ -43,50 +43,13 @@ export default {
       }
     }
   },
-  methods: {
-    sendFriendRequest(userId) {},
-    cancelFriendRequest(userId) {}
-  },
   created() {
-    this.recommendations = {
-      recommendedResources:  [
-        {
-          id: '2',
-          resourceName: 'Microservices: pros and cons',
-          resourceType: 'Статья',
-        },
-        {
-          id: '3',
-          resourceName: 'Machine Learning - basics',
-          resourceType: 'Видео',
-        },
-        {
-          id: '5',
-          resourceName: 'Angular from zero to hero',
-          resourceType: 'Курс',
-        }
-      ],
-      recommendedResourcesByCompany: [
-        {
-          id: '2',
-          resourceName: 'Microservices: pros and cons',
-          resourceType: 'Статья',
-          recommendedBy: 'maxim.volkov добавил в избранное',
-        },
-        {
-          id: '4',
-          resourceName: 'Project Management',
-          resourceType: 'Курс',
-          recommendedBy: 'pedro.soares поставил оценку 5',
-        },
-        {
-          id: '4',
-          resourceName: 'C# основы',
-          resourceType: 'Видео',
-          recommendedBy: 'alexander.karpov добавил в избранное',
-        },
-      ]
-    };
+    axios
+        .get(`${BACKEND_URL}/recommendations`, {headers: authHeader()})
+        .then((response) => {
+          this.recommendations = response.data;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>

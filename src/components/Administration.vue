@@ -123,119 +123,111 @@ export default {
   },
   methods: {
     createResource(newResource) {
-      this.resources.push({
-        id: '6',
-        resourceName: newResource.resourceName,
-        resourceType: newResource.resourceType,
-        resourceLink: newResource.resourceLink,
-        tags: newResource.tags,
-      });
+      axios.post(`${BACKEND_URL}/resources`,
+          {
+            resource: newResource,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.resources.push(response.data);
+          })
+          .catch(handleAxiosError);
     },
     createUser(newUser) {
-      this.users.push({
-        id: '4',
-        userName: newUser.userName,
-        isAdmin: newUser.isAdmin,
-      });
+      axios.post(`${BACKEND_URL}/users`,
+          {
+            user: newUser,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.users.push(response.data);
+          })
+          .catch(handleAxiosError);
     },
     createSelection(newSelection) {
-      this.selections.push({
-        id: '4',
-        selectionName: newSelection.selectionName,
-        description: newSelection.description,
-        resources: newSelection.resources,
-      });
+      axios.post(`${BACKEND_URL}/selections`,
+          {
+            selection: newSelection,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.selections.push(response.data);
+          })
+          .catch(handleAxiosError);
+    },
+    createTag(newTag) {
+      axios.post(`${BACKEND_URL}/tags`,
+          {
+            tag: newTag,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.tags.push(response.data);
+          })
+          .catch(handleAxiosError);
+    },
+    createCompany(newCompany) {
+      axios.post(`${BACKEND_URL}/companies`,
+          {
+            company: newCompany,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.companies.push(response.data);
+          })
+          .catch(handleAxiosError);
+    },
+    createProject(newProject) {
+      axios.post(`${BACKEND_URL}/projects`,
+          {
+            project: newProject,
+          },
+          {headers: authHeader()})
+          .then((response) => {
+            this.projects.push(response.data);
+          })
+          .catch(handleAxiosError);
     }
   },
   created() {
-    this.pendingResources = [
-      {
-        id: '20', resourceName: 'Что нужно знать Java-разработчику в 2024 году', resourceType: 'Статья',
-        resourceLink: 'https://habr.com/ru/companies/ibs/articles/810711/',
-        tags: ['Java', 'ML'],
-      },
-      {
-        id: '21', resourceName: 'Java: перспективы и тренды', resourceType: 'Статья',
-        resourceLink: 'https://habr.com/ru/companies/lanit/articles/742100/',
-        tags: [],
-      },
-    ];
-    this.rejectedResources = [
-      {
-        id: '1', resourceName: 'Кино-новинки 2024', resourceType: 'Статья',
-        resourceLink: 'https://www.kinopoisk.ru/media/article/4008819/',
-        tags: [],
-      },
-    ];
-    this.resources = [
-      {
-        id: '1', resourceName: 'Learning C# for beginners', resourceType: 'Статья',
-        resourceLink: 'https://www.simplilearn.com/c-sharp-programming-for-beginners-article',
-        tags: ['C#'],
-        specialties: ['Backend'],
-      },
-      {
-        id: '2', resourceName: 'Microservices: pros and cons', resourceType: 'Статья',
-        resourceLink: 'https://cloudacademy.com/blog/microservices-architecture-challenge-advantage-drawback/',
-        tags: ['microservices', 'backend-development'],
-        specialties: ['Backend', 'Solution Architect'],
-      },
-      {
-        id: '3', resourceName: 'Machine Learning - basics', resourceType: 'Видео',
-        resourceLink: 'https://www.youtube.com/watch?v=ukzFI9rgwfU',
-        tags: ['ML', 'algorythms'],
-        specialties: ['Backend', 'Algorithms'],
-      },
-      {
-        id: '4', resourceName: 'Project Management', resourceType: 'Статья',
-        resourceLink: 'https://hbr.org/topic/subject/project-management',
-        tags: ['PM', 'management'],
-        specialties: ['PM'],
-      },
-      {
-        id: '5', resourceName: 'Angular from zero to hero', resourceType: 'Курс',
-        resourceLink: 'https://www.udemy.com/course/new-angular-from-zero-to-hero/',
-        tags: ['Angular', 'frontend-development', 'UI'],
-        specialties: ['Frontend'],
-      }
-    ];
-    this.users = [
-      {id: '1', userName: 'maria', isAdmin: true, companyAuthority: 'Netcracker'},
-      {id: '2', userName: 'alexander', isAdmin: true},
-      {id: '3', userName: 'marina', isAdmin: false, companyAuthority: 'RedCollar'}
-    ];
-    this.companies = [
-      {id: '1', companyName: 'DSR', description: 'DSR Corporation — международная команда профессионалов, искренне увлеченных разработкой ПО. Созданная инженерами для инженеров. Мы решаем сложные задачи, работаем с новыми технологиями и разрабатываем комплексные программные решения. Нас ценят клиенты во всем мире — за проактивность, приверженность качеству и экспертизу. Обмен опытом, гибкость и разнообразие проектов в компании — гарантия быстрого профессионального роста для специалистов любого уровня.'},
-      {id: '2', companyName: 'Netcracker', description: 'Поставщик продуктовых решений BSS/OSS для провайдеров услуг связи и кабельных операторов в мире. Компания специализируется на создании, внедрении и сопровождении систем поддержки бизнеса BSS и систем операционной поддержки OSS.'},
-      {id: '3', companyName: 'RedCollar', description: 'Снаружи — сильный визуал, внутри — мощный технологический подход.'},
-    ];
-    this.selections = [
-      {
-        id: '1', selectionName: 'Топ 5 статей про Java', description: 'Эти статьи помогут вам в обучении с нуля',
-        resources: ['Холостые циклы в Java', ' Производительность Java: нюансы', 'Обработка исключений в Java',
-          'It is Wednesday, my java dudes', 'Сквозное и интеграционное тестирование'],
-        author: 'mariia.alexeevna',
-      },
-      {
-        id: '2', selectionName: 'Как стать Vue разработчиком за месяц', description: 'Курсы для фронтендеров',
-        resources: ['Skills: Vue.js', 'Geeks: Vue.js covered', 'Frontend - Vue.js', 'JavaScript + Vue.js'],
-        author: 'alexander.klukvin',
-      },
-      {
-        id: '3', selectionName: 'Наиболее часто рекомендуемые книги для тестировщиков',
-        resources: ['tестирование dot com', 'Тестирование программного обеспечения. Базовый курс', 'Тестирование черного ящика'],
-        author: 'anastasia.knopkina',
-      },
-    ];
-    this.tags = [
-      {id: '1', tagName: 'ML'}, {id: '2', tagName: 'Java'}, {id: '3', tagName: 'Spring'}, {id: '4', tagName: 'AI'},
-      {id: '5', tagName: 'Angular'}, {id: '6', tagName: 'QA'}, {id: '7', tagName: 'PM'}, {id: '8', tagName: 'Vue.js'},
-    ];
-    this.stats = [
-      {resource: 'Как стать Vue разработчиком за месяц', favorite: 3, link: 10, mark5: 5, mark4: 15, mark3: 10, mark2: 0, mark1: 0},
-      {resource: 'Geeks: Vue.js covered', favorite: 13, link: 22, mark5: 15, mark4: 15, mark3: 4, mark2: 0, mark1: 1},
-      {resource: 'Производительность Java: нюансы', favorite: 20, link: 33, mark5: 12, mark4: 19, mark3: 0, mark2: 2, mark1: 0},
-    ];
+    axios
+        .get(`${BACKEND_URL}/resources`, {headers: authHeader()})
+        .then((response) => {
+          this.pendingResources = response.data.pendingResources;
+          this.rejectedResources = response.data.rejectedResources;
+          this.resources = response.data.resources;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/users`, {headers: authHeader()})
+        .then((response) => {
+          this.users = response.data;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/companies`, {headers: authHeader()})
+        .then((response) => {
+          this.companies = response.data;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/selections`, {headers: authHeader()})
+        .then((response) => {
+          this.selections = response.data;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/tags`, {headers: authHeader()})
+        .then((response) => {
+          this.tags = response.data;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/stats`, {headers: authHeader()})
+        .then((response) => {
+          this.stats = response.data;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>

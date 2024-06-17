@@ -32,24 +32,41 @@ export default {
   methods: {
     login(event) {
       event.preventDefault();
-      this.error = false;
 
-      if (!this.showLogin) {
-        this.showLogin = true;
-        this.showRegister = false;
-        this.showRegisterButton = false;
-      } else {
-        authenticateUser();
+      axios.post(`${BACKEND_URL}/users/login`,
+          {
+            userName: this.userName,
+            password: this.password,
+          }).then((response) => {
+        this.error = false;
+        authenticateUser(response.data.userName, response.data.password);
         this.$router.push(this.$route.query.returnUrl || '/');
-      }
+      })
+          .catch((e) => {
+            this.error = true;
+            if (e.response && (e.response.status === 401 || e.response.status === 403)) {
+              localStorage.removeItem('user');
+            }
+          });
     },
     register(event) {
       event.preventDefault();
 
-      if (!this.showLogin) {
-        this.showLogin = false;
-        this.showRegister = true;
-      }
+      axios.post(`${BACKEND_URL}/users/register`,
+          {
+            userName: this.userName,
+            password: this.password,
+          }).then((response) => {
+        this.error = false;
+        authenticateUser(response.data.userName, response.data.password);
+        this.$router.push(this.$route.query.returnUrl || '/');
+      })
+          .catch((e) => {
+            this.error = true;
+            if (e.response && (e.response.status === 401 || e.response.status === 403)) {
+              localStorage.removeItem('user');
+            }
+          });
     }
   }
 }

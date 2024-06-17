@@ -71,7 +71,7 @@ export default {
     Comments, Rating
   },
   computed: {
-    eventId() {
+    resourceId() {
       return this.$route.params.id
     },
   },
@@ -89,52 +89,37 @@ export default {
     }
   },
   methods: {
-    onMarkChange(newMark) {},
+    onMarkChange(newMark) {
+      axios.patch(`${BACKEND_URL}/resources/${this.resourceId}/mark`, {newMark: newMark},
+          {headers: authHeader()})
+          .catch(handleAxiosError);
+    },
+    onFavoriteChange() {
+      axios.patch(`${BACKEND_URL}/resources/${this.resourceId}/favorite`,
+          {headers: authHeader()})
+          .catch(handleAxiosError);
+    },
     createComment(newComment) {
-      this.resource.resourceComments.push(newComment);
+      axios.post(`${BACKEND_URL}/comments`, {text: newComment.commentText, resourceId: this.resourceId},
+          {headers: authHeader()})
+          .then((response) => {
+            this.resource.resourceComments.push(response.data);
+          }).catch(handleAxiosError);
     }
   },
   created() {
-    this.resource = {
-      id: '1',
-      resourceName: 'Java 8: Овладейте новым уровнем абстракции',
-      resourceType: 'Статья',
-      tags: ['Java', 'Java 8', 'Backend'],
-      specialties: ['Backend Engineer', 'Java Developer'],
-      resourceComments: [
-        {
-          id: '1',
-          userName: 'user123',
-          text: 'Статья супер! Очень полезно',
-          date: '12/13/2024',
-        },
-        {
-          id: '2',
-          userName: 'anya',
-          text: 'Мне не понравилось',
-          date: '04/10/2024',
-        },
-      ],
-      willGo: true,
-      mark: 5,
-    };
-    this.similarResourcesRecommended = [
-      {
-        id: '6',
-        resourceName: 'Курс по Java для продвинутых',
-        resourceType: 'Курс',
-      },
-      {
-        id: '10',
-        resourceName: 'Spring for production development',
-        resourceType: 'Видео',
-      },
-      {
-        id: '11',
-        resourceName: 'Другие возможности Java',
-        resourceType: 'Статья',
-      }
-    ]
+    axios
+        .get(`${BACKEND_URL}/resources/${this.resourceId}`, {headers: authHeader()})
+        .then((response) => {
+          this.resource = response.data;
+        })
+        .catch(handleAxiosError);
+    axios
+        .get(`${BACKEND_URL}/resources/${this.resourceId}/similar`, {headers: authHeader()})
+        .then((response) => {
+          this.similarResourcesRecommended = response.data;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>

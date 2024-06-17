@@ -144,29 +144,15 @@ export default {
     }
   },
   created() {
-    this.resources = [
-      {id: '1', resourceName: 'Learning C# for beginners', resourceType: 'Статья', tags: ['Backend', 'С#']},
-      {id: '1', resourceName: 'Java 8: Овладейте новым уровнем абстракции?', resourceType: 'Статья', tags: ['Java', 'Java 8', 'Backend']},
-      {id: '1', resourceName: 'Vue.js + Asp.Net Core MVC', resourceType: 'Туториал', tags: ['Vue.js', 'Asp.Net Core', 'MVC']},
-      {id: '1', resourceName: 'Курс Angular 15 Advanced', resourceType: 'Курс', tags: ['Angular', 'Angular 15', 'Frontend']},
-      {id: '1', resourceName: 'Vue.js vs Angular', resourceType: 'Статья', tags: ['Vue.js', 'Angular', 'Frontend']},
-      {id: '1', resourceName: 'Node.js приложение с нуля', resourceType: 'Туториал', tags: ['Node.js', 'Web']},
-      {id: '1', resourceName: 'Java Application', resourceType: 'Видео', tags: ['Java', 'Java 8', 'Backend']},
-      {id: '1', resourceName: 'Высоконагруженные приложения', resourceType: 'Книга', tags: ['БД', 'HighLoad']},
-    ];
-    this.popularResources = [
-      {id: '2', resourceName: 'Microservices: pros and cons', resourceType: 'Статья', tags: ['Микросервисы']},
-      {id: '3', resourceName: 'Machine Learning - basics', resourceType: 'Видео', tags: ['ML']}
-    ];
-    this.recommendedResources = [
-      {id: '4', resourceName: 'Project Management', resourceType: 'Статья', tags: ['PM', 'Management']},
-      {id: '5', resourceName: 'Angular from zero to hero', resourceType: 'Курс', tags: ['Angular', 'Frontend']},
-    ];
-    this.recommendedResourcesByTags = [
-      {id: '31', resourceName: 'UI: все что нужно знать', resourceType: 'Статья', tags: ['Frontend', 'HTML', 'CSS']},
-      {id: '32', resourceName: 'Vue.js', resourceType: 'Курс', tags: ['Frontend', 'Vue.js']},
-      {id: '33', resourceName: 'Team Leadership', resourceType: 'Курс', tags: ['TeamLead', 'Vue.js']},
-    ];
+    axios
+        .get(`${BACKEND_URL}/resources`, {headers: authHeader()})
+        .then((response) => {
+          this.resources = response.data.resources;
+          this.popularResources = response.data.this.popularResources;
+          this.recommendedResources = response.data.this.recommendedResources;
+          this.recommendedResourcesByTags = response.data.this.recommendedResourcesByTags;
+        })
+        .catch(handleAxiosError);
   }
 }
 </script>
