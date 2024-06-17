@@ -41,7 +41,6 @@
       <div class="rating-and-favorite-block">
         <rating :mark="resource.mark" @onMarkChange="onMarkChange"/>
         <div><i class="fas fa-bookmark favorite-icon"></i></div>
-        <div><button class="dropbtn-1">Рекомендовать от DSR</button></div>
       </div>
 
       <comments :resource-comments="resource.resourceComments" @createComment="createComment"/>
